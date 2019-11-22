@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import partypopper from './party-popper.svg';
+import fright from './fright.svg';
 import './App.css';
 import './bootstrap.min.css';
 import IncidentDetails from './components/IncidentDetails';
@@ -32,7 +33,11 @@ const DaysWithoutIncidents = () => {
       <header className="App-header">
         {apiDataJson ? (
           <>
-            <img src={partypopper} className="App-logo" alt="logo" />
+            if (apiDataJson.daysAgo == 0) {
+              <img src={fright} className="App-logo" alt="logo" />
+            } else {
+              <img src={partypopper} className="App-logo" alt="logo" />
+            }
             <IncidentsDaysAgo apiDataJson={apiDataJson} />
             <IncidentDetails apiDataJson={apiDataJson} />
           </>
